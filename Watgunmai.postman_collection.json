@@ -1,0 +1,494 @@
+{
+	"info": {
+		"_postman_id": "7ad065aa-812a-4d6e-a5ed-835a37072739",
+		"name": "Watgunmai",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "GETUsersTests",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "57abc9a3-f11c-4b43-a1ee-83fe2204cd3b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Test the first id of first user API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0]._id).to.eql(\"5fb4a89a7b90de199805895b\");",
+									"});",
+									"",
+									"pm.test(\"Test the first name of first user API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].name).to.eql(\"DREAM CHASER\");",
+									"});",
+									"",
+									"pm.test(\"Test the first email of first user API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].email).to.eql(\"dream@gmail.com\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"username\":\"{{username}}\",\r\n\"password\":\"{{password}}\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/users",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POSTUsersTests",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "19a82860-d610-4385-b81a-149dcb8fbca2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Test the POST method if the id is matched\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData._id).to.eql(\"5fc1f25f19b1a33017db911c\");",
+									"});",
+									"",
+									"pm.test(\"Test the POST method if the name is matched\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"TestPostUser\");",
+									"});",
+									"",
+									"pm.test(\"Test the POST method if the email is matched\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.email).to.eql(\"testpostuser@gmail.com\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"TestPostUser\",\n  \"email\": \"testpostuser@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/users",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETUsersByIdTests",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "81137343-9f0e-4c69-ad50-32843bdcc14c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Test the given id is matched the id of user API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData._id).to.eql(\"5fb4a89a7b90de199805895b\");",
+									"});",
+									"",
+									"pm.test(\"Test the given name is matched the name of user API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"DREAM CHASER\");",
+									"});",
+									"",
+									"pm.test(\"Test the given email is matched the email of user API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.email).to.eql(\"dream@gmail.com\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/users/5fb4a89a7b90de199805895b",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"5fb4a89a7b90de199805895b"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Temples",
+			"item": [
+				{
+					"name": "GETTemplesTests",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9c4ad98c-a871-4b7d-a1ef-4dde9c5800ac",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Test the first id of first temple API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0]._id).to.eql(\"5fb4a89a7b90de199805895a\");",
+									"});",
+									"",
+									"pm.test(\"Test the first name of first temple API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].name).to.eql(\"วัดพระศรีรัตนศาสดาราม\");",
+									"});",
+									"",
+									"pm.test(\"Test the first latitude of first temple API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].lat).to.eql(13.7516435);",
+									"});",
+									"",
+									"pm.test(\"Test the first longitude of first temple API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].long).to.eql(100.4927041);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/temples",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"temples"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETTemplesByIdTests",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d63cd62c-9282-4801-86a9-07c09f0adeb9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Test the given id is matched the id of temple API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData._id).to.eql(\"5fb4a89a7b90de199805895a\");",
+									"});",
+									"",
+									"pm.test(\"Test the given id is matched the name of temple API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"วัดพระศรีรัตนศาสดาราม\");",
+									"});",
+									"",
+									"pm.test(\"Test the given id is matched the latitude of temple API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.lat).to.eql(13.7516435);",
+									"});",
+									"",
+									"pm.test(\"Test the given id is matched the longitude of temple API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.long).to.eql(100.4927041);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/temples/5fb4a89a7b90de199805895a",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"temples",
+								"5fb4a89a7b90de199805895a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETTempleInfoByTempleNameTest",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "97c39dd2-0303-4801-816e-3e52981ab007",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Test the given name is matched the id of temple API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0]._id).to.eql(\"5fb4a89a7b90de199805895a\");",
+									"});",
+									"",
+									"pm.test(\"Test the given name is matched the name of temple API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].name).to.eql(\"วัดพระศรีรัตนศาสดาราม\");",
+									"});",
+									"",
+									"pm.test(\"Test the given id is matched the latitude of temple API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].lat).to.eql(13.7516435);",
+									"});",
+									"",
+									"pm.test(\"Test the given id is matched the longitude of temple API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].long).to.eql(100.4927041);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/temples/name/วัดพระศรีรัตนศาสดาราม",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"temples",
+								"name",
+								"วัดพระศรีรัตนศาสดาราม"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETTempleInfoByIdTest",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fd112e78-9a17-4551-8864-3cabb013be56",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Test the given id is matched the name of temple API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.temple_name).to.eql(\"วัดพระศรีรัตนศาสดาราม\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/temples/5fb4a89a7b90de199805895a/templeInfo",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"temples",
+								"5fb4a89a7b90de199805895a",
+								"templeInfo"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "GETReviewsByTempleIdTests",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "982116cf-48e4-43ff-8690-aebbe9665b11",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Test the given id of temple is matched the id of review API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0]._id).to.eql(\"5fb4a89a7b90de199805895c\");",
+									"});",
+									"",
+									"pm.test(\"Test the given id of temple is matched the user id of review API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].userid).to.eql(\"5fb4a89a7b90de199805895b\");",
+									"});",
+									"",
+									"pm.test(\"Test the given id of temple is matched the star of review API\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].stars).to.eql(5);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/reviews/5fb4a89a7b90de199805895a",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"reviews",
+								"5fb4a89a7b90de199805895a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POSTReviewTests",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fcb3eb84-00c0-465d-811f-b1c2ff2d4334",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userid\": \"5fc1f25f19b1a33017db911c\",\n  \"stars\": 3,\n  \"title\": \"TestPostReview\",\n  \"content\": \"This is a test for POST medthod in review end point\",\n  \"date\": \"NOW\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/reviews/5fc200279dfa0f310081fc5c",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"reviews",
+								"5fc200279dfa0f310081fc5c"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

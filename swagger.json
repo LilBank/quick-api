@@ -1,0 +1,551 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Wat Gun Mai",
+        "description": "Wat Gun Mai Application API",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Users",
+            "description": "API for users in the system"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get all users in system",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Add user in system",
+                "description": "Create new user in system",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "User that we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New user is created",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of user that we want to find",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "summary": "Get user with given ID",
+                "tags": [
+                    "Users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User is shown",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete user by ID",
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID of user that we want to find",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User is delete",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                }
+            }
+        },
+        "/temples": {
+            "get": {
+                "tags": [
+                    "Temples"
+                ],
+                "summary": "Get all temples in system",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Temple"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Temples"
+                ],
+                "summary": "Add temple in system",
+                "description": "Create new temple in system",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "Temple that we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/Temple"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New temple is created",
+                        "schema": {
+                            "$ref": "#/definitions/Temple"
+                        }
+                    }
+                }
+            }
+        },
+        "/temples/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of temple that we want to find",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "summary": "get temple with given ID",
+                "tags": [
+                    "Temples"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "temple is shown",
+                        "schema": {
+                            "$ref": "#/definitions/Temple"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update temple with give ID",
+                "tags": [
+                    "Temples"
+                ],
+                "parameters": [
+                    {
+                        "name": "temple",
+                        "in": "body",
+                        "description": "Temple with new values of properties",
+                        "schema": {
+                            "$ref": "#/definitions/TempleUpdate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Temple is updated",
+                        "schema": {
+                            "$ref": "#/definitions/TempleUpdate"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete temple by ID",
+                "tags": [
+                    "Temples"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID of temple that we want to find",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Temple is delete",
+                        "schema": {
+                            "$ref": "#/definitions/Temple"
+                        }
+                    }
+                }
+            }
+        },
+        "/temples/{templeId}/templeInfo": {
+            "parameters": [
+                {
+                    "name": "templeId",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of temple's review that we want to find",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Temples"
+                ],
+                "summary": "Get all temples in system",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/TempleInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/temples/name/{templeName}": {
+            "parameters": [
+                {
+                    "name": "templeName",
+                    "in": "path",
+                    "required": true,
+                    "description": "Temple name",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "summary": "return list of temples that match given temple name",
+                "tags": [
+                    "Temples"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "temples is shown",
+                        "schema": {
+                            "$ref": "#/definitions/Temple"
+                        }
+                    }
+                }
+            }
+        },
+        "/temples/nearby/{templeId}": {
+            "parameters": [
+                {
+                    "name": "templeId",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of temple's review that we want to find",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "summary": "return list of the nearest five temples from the given temple",
+                "tags": [
+                    "Temples"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "temples is shown",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/NearbyTemple"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/reviews/{templeId}": {
+            "parameters": [
+                {
+                    "name": "templeId",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of temple's review that we want to find",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "summary": "Get review with given ID",
+                "tags": [
+                    "Reviews"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Review is shown",
+                        "schema": {
+                            "$ref": "#/definitions/Review"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Reviews"
+                ],
+                "summary": "Add review in system",
+                "description": "Create new review in system",
+                "parameters": [
+                    {
+                        "name": "review",
+                        "in": "body",
+                        "description": "Review that we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/Review"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New review is created",
+                        "schema": {
+                            "$ref": "#/definitions/Review"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "required": [
+                "name",
+                "email"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "uniqueItems": true
+                },
+                "email": {
+                    "type": "string"
+                }
+            }
+        },
+        "Temple": {
+            "required": [
+                "name",
+                "description",
+                "address",
+                "lat",
+                "long",
+                "reviews"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "uniqueItems": true
+                },
+                "description": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "lat": {
+                    "type": "number"
+                },
+                "long": {
+                    "type": "number"
+                },
+                "reviews": {
+                    "type": "string"
+                }
+            }
+        },
+        "TempleUpdate": {
+            "required": [
+                "name",
+                "description",
+                "address",
+                "lat",
+                "long"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "uniqueItems": true
+                },
+                "description": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "lat": {
+                    "type": "number"
+                },
+                "long": {
+                    "type": "number"
+                }
+            }
+        },
+        "TempleInfo": {
+            "required": [
+                "temple_name",
+                "temp",
+                "temp_feels_like",
+                "temp_icon_image_path",
+                "weather_description",
+                "uv",
+                "uv_level",
+                "uv_recommendation",
+                "avg_rating",
+                "reviews"
+            ],
+            "properties": {
+                "temple_name": {
+                    "type": "string",
+                    "uniqueItems": true
+                },
+                "temp": {
+                    "type": "number"
+                },
+                "temp_feels_like": {
+                    "type": "number"
+                },
+                "temp_icon_image_path": {
+                    "type": "string"
+                },
+                "weather_description": {
+                    "type": "string"
+                },
+                "uv": {
+                    "type": "number"
+                },
+                "uv_level": {
+                    "type": "number"
+                },
+                "uv_recommendation": {
+                    "type": "string"
+                },
+                "avg_rating": {
+                    "type": "number"
+                },
+                "reviews": {
+                    "type": "string"
+                }
+            }
+        },
+        "NearbyTemple": {
+            "required": [
+                "temple",
+                "distance"
+            ],
+            "properties": {
+                "temple": {
+                    "type": "string"
+                },
+                "distance": {
+                    "type": "number"
+                }
+            }
+        },
+        "Review": {
+            "required": [
+                "userid",
+                "stars",
+                "title",
+                "content"
+            ],
+            "properties": {
+                "userid": {
+                    "type": "string",
+                    "uniqueItems": true
+                },
+                "stars": {
+                    "type": "number"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                }
+            }
+        },
+        "ReviewUpdate": {
+            "required": [
+                "stars",
+                "title",
+                "content",
+                "date"
+            ],
+            "properties": {
+                "stars": {
+                    "type": "number"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
